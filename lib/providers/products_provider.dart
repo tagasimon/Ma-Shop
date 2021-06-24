@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
-import 'package:my_shop/models/product.dart';
+import 'package:my_shop/providers/product_model.dart';
 
 class ProductsProvider with ChangeNotifier {
-  List<Product> _items = [
-    Product(
+  List<ProductModel> _items = [
+    ProductModel(
         id: 'id1',
         title: 'Red Shirt',
         description: "description",
@@ -11,7 +11,7 @@ class ProductsProvider with ChangeNotifier {
         imageUrl:
             "https://images.unsplash.com/photo-1623137695111-697d0b907f57?ixid="
             "MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3fHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
-    Product(
+    ProductModel(
         id: 'id2',
         title: 'Black Shirt',
         description: "description",
@@ -19,7 +19,7 @@ class ProductsProvider with ChangeNotifier {
         imageUrl:
             "https://images.unsplash.com/photo-1623137695111-697d0b907f57?ixid="
             "MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3fHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
-    Product(
+    ProductModel(
         id: 'id3',
         title: 'Green Shirt',
         description: "description",
@@ -27,7 +27,7 @@ class ProductsProvider with ChangeNotifier {
         imageUrl:
             "https://images.unsplash.com/photo-1623137695111-697d0b907f57?ixid="
             "MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3fHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
-    Product(
+    ProductModel(
         id: 'id3',
         title: 'New Shirt',
         description: "description",
@@ -36,8 +36,12 @@ class ProductsProvider with ChangeNotifier {
             "https://images.unsplash.com/photo-1623133106725-1e3d77acb7f9?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMXx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
   ];
 
-  List<Product> get items {
+  List<ProductModel> get items {
     return [..._items];
+  }
+
+  ProductModel selectedItem(String id) {
+    return items.firstWhere((product) => product.id == id);
   }
 
   void addProducts() {

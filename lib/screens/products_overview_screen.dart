@@ -7,11 +7,8 @@ class ProductsOverviewScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("My Shop"),
+        title: const Text("My Shop"),
         centerTitle: true,
-        // actions: [
-        //   IconButton(icon: Icon(Icons.menu), onPressed: () {}),
-        // ],
       ),
       body: ProductsGrid(),
     );

@@ -1,17 +1,9 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:my_shop/providers/product_model.dart';
 import 'package:my_shop/screens/product_detail_screen.dart';
 import 'package:provider/provider.dart';
 
 class ProductItem extends StatelessWidget {
-  // final String id;
-  // final String title;
-  // final String imgUrl;
-  //
-  // ProductItem(this.id, this.title, this.imgUrl);
-
   @override
   Widget build(BuildContext context) {
     final product = Provider.of<ProductModel>(context);
@@ -46,15 +38,16 @@ class ProductItem extends StatelessWidget {
               // color: Theme.of(context).accentColor,
               color: Colors.white,
             ),
-            onPressed: product.toggleFavStatus,
+            onPressed: () {
+              product.toggleFavStatus();
+            },
           ),
           trailing: IconButton(
-            icon: Icon(
-              Icons.add_shopping_cart,
-              color: Theme.of(context).accentColor,
-            ),
-            onPressed: null,
-          ),
+              icon: Icon(
+                Icons.add_shopping_cart,
+                color: Theme.of(context).accentColor,
+              ),
+              onPressed: null),
         ),
       ),
     );

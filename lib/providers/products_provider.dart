@@ -5,7 +5,7 @@ class ProductsProvider with ChangeNotifier {
   List<ProductModel> _items = [
     ProductModel(
         id: 'id1',
-        title: 'Red Shirt',
+        title: 'RED Shirt',
         description: "description",
         price: 2000,
         imageUrl:
@@ -13,7 +13,7 @@ class ProductsProvider with ChangeNotifier {
             "MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3fHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
     ProductModel(
         id: 'id2',
-        title: 'Black Shirt',
+        title: 'BLACK Shirt',
         description: "description",
         price: 2000,
         imageUrl:
@@ -21,15 +21,15 @@ class ProductsProvider with ChangeNotifier {
             "MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3fHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
     ProductModel(
         id: 'id3',
-        title: 'Green Shirt',
+        title: 'GREEN Shirt',
         description: "description",
         price: 2000,
         imageUrl:
             "https://images.unsplash.com/photo-1623137695111-697d0b907f57?ixid="
             "MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3fHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
     ProductModel(
-        id: 'id3',
-        title: 'New Shirt',
+        id: 'id4',
+        title: 'PURPLE Shirt',
         description: "description",
         price: 2000,
         imageUrl:
@@ -37,11 +37,15 @@ class ProductsProvider with ChangeNotifier {
   ];
 
   List<ProductModel> get items {
-    return [..._items];
+    return _items.toList();
+  }
+
+  List<ProductModel> get favItems {
+    return _items.where((product) => product.isFavourite).toList();
   }
 
   ProductModel selectedItem(String id) {
-    return items.firstWhere((product) => product.id == id);
+    return _items.firstWhere((product) => product.id == id);
   }
 
   void addProducts() {

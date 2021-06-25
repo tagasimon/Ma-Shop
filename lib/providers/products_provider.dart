@@ -37,7 +37,8 @@ class ProductsProvider with ChangeNotifier {
   ];
 
   List<ProductModel> get items {
-    return _items.toList();
+    // return _items.toList();
+    return [..._items];
   }
 
   List<ProductModel> get favItems {

@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 
-class CartItem {
+class CartItemModel {
   final String id;
   final String title;
   final double price;
   final int quantity;
 
-  CartItem({
+  CartItemModel({
     required this.id,
     required this.title,
     required this.price,
@@ -15,9 +15,9 @@ class CartItem {
 }
 
 class Cart with ChangeNotifier {
-  Map<String, CartItem> _items = {};
+  Map<String, CartItemModel> _items = {};
 
-  Map<String, CartItem> get items {
+  Map<String, CartItemModel> get items {
     return {..._items};
   }
 
@@ -36,25 +36,32 @@ class Cart with ChangeNotifier {
   void addItem(String id, String title, double price) {
     if (_items.containsKey(id)) {
       _items.update(
-        DateTime.now().toString(),
-        (existingItem) => CartItem(
+        id,
+        (existingItem) => CartItemModel(
           id: existingItem.id,
           title: existingItem.title,
           price: existingItem.price,
           quantity: existingItem.quantity + 1,
         ),
       );
+      print("Item Updated.....");
     } else {
       _items.putIfAbsent(
-        DateTime.now().toString(),
-        () => CartItem(
-          id: id,
+        id,
+        () => CartItemModel(
+          id: DateTime.now().toString(),
           title: title,
           price: price,
           quantity: 1,
         ),
       );
+      print("Item Added.....");
     }
+    notifyListeners();
+  }
+
+  void removeItem(String id) {
+    _items.remove(id);
     notifyListeners();
   }
 }

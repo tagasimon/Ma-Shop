@@ -1,17 +1,17 @@
-import 'package:flutter/material.dart';
-
-class HomeScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Title"),
-      ),
-      body: Center(
-        child: CircularProgressIndicator(
-          color: Colors.purple,
-        ),
-      ),
-    );
-  }
-}
+// import 'package:flutter/material.dart';
+//
+// class HomeScreen extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text("Ma Shop"),
+//       ),
+//       body: Center(
+//         child: CircularProgressIndicator(
+//           color: Colors.purple,
+//         ),
+//       ),
+//     );
+//   }
+// }

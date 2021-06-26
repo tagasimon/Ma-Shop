@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_shop/providers/products_provider.dart';
 import 'package:provider/provider.dart';
@@ -18,11 +19,41 @@ class ProductDetailScreen extends StatelessWidget {
         //   IconButton(icon: Icon(Icons.menu), onPressed: () {}),
         // ],
       ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            Text(""),
-          ],
+      body: Container(
+        padding: EdgeInsets.all(10.0),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            children: [
+              Container(
+                width: double.infinity,
+                child: Image.network(
+                  "${selectedItem.imageUrl}",
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Container(
+                child: Text(
+                  "${selectedItem.price}",
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              Container(
+                child: Text(
+                  "${selectedItem.description}",
+                  style: TextStyle(
+                    fontSize: 16.0,
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

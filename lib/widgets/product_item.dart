@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:my_shop/providers/cart_model.dart';
+import 'package:my_shop/providers/cart_item_model.dart';
 import 'package:my_shop/providers/product_model.dart';
+import 'package:my_shop/screens/cart_screen.dart';
 import 'package:my_shop/screens/product_detail_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -57,7 +58,9 @@ class ProductItem extends StatelessWidget {
                           style: OutlinedButton.styleFrom(
                               shape: StadiumBorder(),
                               side: BorderSide(width: 2, color: Colors.white)),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(context, CartScreen.routeName);
+                          },
                           child: Text(
                             'View Cart',
                             style: TextStyle(fontWeight: FontWeight.bold),

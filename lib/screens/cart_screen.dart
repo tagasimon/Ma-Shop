@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:my_shop/providers/cart_model.dart';
+import 'package:my_shop/providers/cart_item_model.dart';
+import 'package:my_shop/widgets/cart_item_widget.dart';
 import 'package:provider/provider.dart';
 
 class CartScreen extends StatefulWidget {
@@ -18,6 +20,19 @@ class _CartScreenState extends State<CartScreen> {
       ),
       body: Column(
         children: [
+          Expanded(
+            child: ListView.builder(
+                itemCount: cart.cartLength,
+                itemBuilder: (context, i) {
+                  return CartItemWidget(
+                    id: cart.items.values.toList()[i].id,
+                    productId: cart.items.keys.toList()[i],
+                    title: cart.items.values.toList()[i].title,
+                    quantity: cart.items.values.toList()[i].quantity,
+                    price: cart.items.values.toList()[i].price,
+                  );
+                }),
+          ),
           Card(
             child: Padding(
               padding: EdgeInsets.all(10.0),
@@ -29,11 +44,16 @@ class _CartScreenState extends State<CartScreen> {
                   Chip(
                     label: Text("${cart.cartTotal}"),
                   ),
-                  TextButton(onPressed: () {}, child: Text("Order Now"))
+                  TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        "Order Now",
+                        style: TextStyle(fontWeight: FontWeight.w900),
+                      ))
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );

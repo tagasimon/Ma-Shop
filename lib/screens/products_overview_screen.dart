@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_shop/providers/cart_model.dart';
+import 'package:my_shop/providers/cart_item_model.dart';
 import 'package:my_shop/providers/products_provider.dart';
 import 'package:my_shop/screens/cart_screen.dart';
 import 'package:my_shop/widgets/badge.dart';
@@ -23,7 +23,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("My Shop"),
-        centerTitle: true,
+        // centerTitle: true,
         actions: [
           Consumer<Cart>(
             builder: (context, data, ch) {

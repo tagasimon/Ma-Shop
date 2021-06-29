@@ -4,27 +4,32 @@ import 'package:my_shop/providers/cart_item_model.dart';
 class OrderModel {
   final String id;
   final double amount;
-  final CartItemModel items;
+  final List<CartItemModel> cartItems;
   final DateTime date;
 
   OrderModel({
     required this.id,
     required this.amount,
-    required this.items,
+    required this.cartItems,
     required this.date,
   });
 }
 
-class Order with ChangeNotifier {
-  Map<String, OrderModel> _order = {};
+class Orders with ChangeNotifier {
+  List<OrderModel> _orders = [];
 
-  Map get getOrders {
-    return {..._order};
+  List<OrderModel> get orders {
+    return [..._orders];
   }
 
-  void addOrder(String id, double amount, CartItemModel items, DateTime date) {
-    _order.putIfAbsent(
-        id, () => OrderModel(id: id, amount: amount, items: items, date: date));
+  void addOrder(List<CartItemModel> cartItems, double total) {
+    _orders.insert(
+        0,
+        OrderModel(
+            id: DateTime.now().toString(),
+            amount: total,
+            cartItems: cartItems,
+            date: DateTime.now()));
     notifyListeners();
   }
 }

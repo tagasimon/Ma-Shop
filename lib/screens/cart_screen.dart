@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_shop/providers/cart_item_model.dart';
+import 'package:my_shop/providers/order_model.dart';
 import 'package:my_shop/widgets/cart_item_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -14,6 +15,7 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     var cart = Provider.of<Cart>(context);
+    var orders = Provider.of<Orders>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text("Cart"),
@@ -45,7 +47,11 @@ class _CartScreenState extends State<CartScreen> {
                     label: Text("${cart.cartTotal}"),
                   ),
                   TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        orders.addOrder(
+                            cart.items.values.toList(), cart.cartTotal);
+                        cart.clearCart();
+                      },
                       child: Text(
                         "Order Now",
                         style: TextStyle(fontWeight: FontWeight.w900),

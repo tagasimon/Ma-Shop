@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:my_shop/providers/cart_item_model.dart';
 import 'package:my_shop/providers/products_provider.dart';
 import 'package:my_shop/screens/cart_screen.dart';
-import 'package:my_shop/widgets/badge.dart';
-import 'package:my_shop/widgets/products_grid.dart';
+import 'package:my_shop/widgets/app_drawer_widget.dart';
+import 'package:my_shop/widgets/badge_widget.dart';
+import 'package:my_shop/widgets/products_grid_widget.dart';
 import 'package:provider/provider.dart';
 
 enum FilterValues { All, Favourites }
@@ -27,7 +28,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
         actions: [
           Consumer<Cart>(
             builder: (context, data, ch) {
-              return Badge(
+              return BadgeWidget(
                 child: ch!,
                 value: "${data.cartLength}",
                 color: Colors.red,
@@ -68,7 +69,8 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
           )
         ],
       ),
-      body: ProductsGrid(showFavouritesOnly: showFavouritesOnly),
+      body: ProductsGridWidget(showFavouritesOnly: showFavouritesOnly),
+      drawer: AppDrawerWidget(),
     );
   }
 }

@@ -47,6 +47,7 @@ class ProductItemWidget extends StatelessWidget {
                 // color: Theme.of(context).accentColor,
               ),
               onPressed: () {
+                ScaffoldMessenger.of(context).hideCurrentSnackBar();
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     backgroundColor: Theme.of(context).primaryColor,
